@@ -3,11 +3,10 @@
 /* count characters in input */
 
 int main(int argc, char *argv[]) {
-    long nc;
+    double nc;
 
-    nc = 0;
-    while (getchar() != EOF)
-        ++nc;
-    printf("number of characters: %ld\n", nc);
+    for (nc = 0; getchar() != EOF; ++nc)
+        ;
+    printf("number of characters: %.0f\n", nc);
     return 0;
 }
