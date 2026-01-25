@@ -7,7 +7,7 @@
 #define STEP 5
 
 int main(int argc, char *argv[]) {
-
+    printf("celsius  fahr\n-------------\n");
     for (int celsius = LOWER; celsius <= UPPER; celsius += STEP)
         printf("%3d\t%3.0f\n", celsius, celsius * 9.0 / 5.0 + 32);
 
