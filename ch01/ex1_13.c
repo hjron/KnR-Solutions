@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 
     /* vertical */
     printf("\n");
-    for (i = MAX; i >= 0; --i) {
+    for (i = MAX-1; i >= 0; --i) {
         if (i > 9)
             printf("%d | ", i);
         else
