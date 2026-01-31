@@ -1,21 +1,38 @@
 #include <stdio.h>
+#include <time.h>
+
+/* timing functionality based on stackoverflow:
+ * /questions/459691/what-is-the-best-timing-method-in-c */
 
 #define SIZE 10
+#define ITERATIONS 10000000
 
 int binsearch(int x, int v[], int n);
 int binsearch1(int x, int v[], int n);
 
 int main(int argc, char *argv[]) {
     int i, needle;
-
     int haystack[SIZE];
+    clock_t start, diff;
 
     needle = 4;
     for (i = 0; i < SIZE; ++i)
         haystack[i] = i;
 
-    printf("match found at index %d\n", binsearch(needle, haystack, SIZE));
-    printf("match found at index %d\n", binsearch1(needle, haystack, SIZE));
+    start = clock();
+    for (i = 0; i < ITERATIONS; ++i)
+        binsearch(needle, haystack, SIZE);
+    diff = clock() - start;
+    printf("msec for %d iterations of binsearch: %lu\n", 
+            ITERATIONS, diff * 1000 / CLOCKS_PER_SEC);
+    
+    start = clock();
+    for (i = 0; i < ITERATIONS; ++i)
+        binsearch1(needle, haystack, SIZE);
+    diff = clock() - start;
+    printf("msec for %d iterations of binsearch1: %lu\n", 
+            ITERATIONS, diff * 1000 / CLOCKS_PER_SEC);
+
     return 0;
 }
 
