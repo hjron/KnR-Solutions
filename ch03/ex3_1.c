@@ -11,11 +11,10 @@ int binsearch(int x, int v[], int n);
 int binsearch1(int x, int v[], int n);
 
 int main(int argc, char *argv[]) {
-    int i, needle;
-    int haystack[SIZE];
+    int i, needle, haystack[SIZE];
     clock_t start, diff;
 
-    needle = 4;
+    needle = 9;
     for (i = 0; i < SIZE; ++i)
         haystack[i] = i;
 
