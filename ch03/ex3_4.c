@@ -31,9 +31,7 @@ void itoa(int n, char s[]) {
     i = 0;
     do {                    /* generate digits in reverse order */
         x = n % 10;
-        if (x < 0)
-            x *= -1;
-        s[i++] = x + '0';       /* get next digit */
+        s[i++] = (x < 0) ? -1 * x + '0' : x + '0';
     } while ((n /= 10) != 0);   /* delete it */
     if (sign < 0) 
         s[i++] = '-';
