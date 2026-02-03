@@ -8,8 +8,8 @@ int main(int argc, char *argv[]) {
     int x, w;
     char xs [25];
 
-    x = 123456;    /* the largest negative int */
-    w = 15;
+    x = 123456;
+    w = 15; /* total length of converted string, ie 9 spaces */
     itoa(x, xs, w);
     printf("the integer %d is now the string \"%s\"\n", x, xs);
 
