@@ -5,15 +5,10 @@ void reverse(char s[]);
 void itoa(int n, char s[]);
 
 int main(int argc, char *argv[]) {
-    char s[] = "ron hagen";
     int x;
     char xs [25];
 
-    printf("before reverse: %s\n", s);
-    reverse(s);
-    printf("after reverse: %s\n", s);
-
-    x = 15994;
+    x = -2147483648;    /* the largest negative int */
     itoa(x, xs);
     printf("the integer %d is now the string %s\n", x, xs);
 
@@ -28,16 +23,18 @@ void reverse(char s[]) {
         c = s[i], s[i] = s[j], s[j] = c;    /* can be 3 stmts, with ; for , */
 }
 
-/* itoa: convert n to characters in s */
+/* itoa: convert n to characters in s, updated to handle largest negative num */
 void itoa(int n, char s[]) {
-    int i, sign;
+    int i, x, sign;
 
-    if ((sign = n) < 0) /* record sign */
-        n = -n;         /* make n positive */
+    sign = n;               /* record sign */
     i = 0;
-    do {        /* generate digits in reverse order */
-        s[i++] = n % 10 + '0';  /* get next digit */
-    } while ((n /= 10) > 0);    /* delete it */
+    do {                    /* generate digits in reverse order */
+        x = n % 10;
+        if (x < 0)
+            x *= -1;
+        s[i++] = x + '0';       /* get next digit */
+    } while ((n /= 10) != 0);   /* delete it */
     if (sign < 0) 
         s[i++] = '-';
     s[i] = '\0';
