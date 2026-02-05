@@ -32,7 +32,7 @@ int get_line(char s[], int lim) {
     return i;
 }
 
-/* strindex: return index of t in s, -1 if none */
+/* strindex: return rightmost index of t in s, -1 if none */
 int strindex(char s[], char t[]) {
     int i, j, k;
 
