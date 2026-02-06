@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
     sum = 0;
     while (get_line(line, MAXLINE) > 0)
-        printf("\t%g\n", sum += atof(line));
+        printf("\t%g\n", sum += a2f(line));
 
     return 0;
 }
