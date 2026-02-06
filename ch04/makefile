@@ -13,7 +13,10 @@ OBJ = main.o getop.o getch.o stack.o atof.o
 calc: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
-.PHONY: clean
+.PHONY: clean clobber
 
 clean:
+	rm -f *.o
+
+clobber:
 	rm -f *.o calc

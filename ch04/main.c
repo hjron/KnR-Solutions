@@ -4,7 +4,7 @@
 
 /* rpn calc */
 int main(int argc, char *argv[]) {
-    int type;
+    int type, rhs;
     double op2;
     char s[MAXOP];
 
@@ -27,6 +27,13 @@ int main(int argc, char *argv[]) {
                 op2 = pop();
                 if (op2 != 0)
                     push(pop() / op2);
+                else
+                    printf("error: zero division\n");
+                break;
+            case '%':
+                rhs = (int) pop();
+                if (op2 != 0)
+                    push((int) pop() % rhs);
                 else
                     printf("error: zero division\n");
                 break;

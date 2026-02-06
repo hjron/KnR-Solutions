@@ -2,17 +2,17 @@
 #include <ctype.h>
 #include "calc.h"
 
-/* getop: get next operator or numeric operand */
+/* getop: get next operator or numeric operand, including negative */
 int getop(char s[]) {
     int i, c;
 
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
-    if (!isdigit(c) && c != '.')
+    if (!isdigit(c) && c != '.' && c != '-')
         return c;       /* not a number */
     i = 0;
-    if (isdigit(c))     /* collect integer part */
+    if (isdigit(c) || c == '-')     /* collect integer part */
         while (isdigit(s[++i] = c = getch()))
             ;
     if (c == '.')       /* collect fraction part */
