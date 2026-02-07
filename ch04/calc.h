@@ -9,6 +9,11 @@
 double a2f(char []);
 void push(double);
 double pop(void);
+double peek(void);
+void copy(void);
+void swap(void);
+void clear(void);
+void prints(void);
 int getop(char []);
 int getch(void);
 void ungetch(int);

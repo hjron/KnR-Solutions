@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I. -g
 DEPS = calc.h
 OBJ = main.o getop.o getch.o stack.o atof.o
 
