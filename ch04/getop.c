@@ -9,9 +9,11 @@ int getop(char s[]) {
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
     s[1] = '\0';
-    if (!isdigit(c) && c != '.' && c != '-')
-        return c;       /* not a number */
     i = 0;
+
+    if (!isdigit(c) && c != '.' && c != '-')
+        return c;       /* command */
+
     if (c == '-') {
         if (isdigit(c = getch()) || c == '.') {     /* negative int */
             s[++i] = c;
@@ -21,15 +23,16 @@ int getop(char s[]) {
             return '-';
         }
     }
-
-    if (isdigit(c))     /* collect integer part */
+    if (isdigit(c)) 
         while (isdigit(s[++i] = c = getch()))
+            ;
 
-    if (c == '.')       /* collect fraction part */
+    if (c == '.')
         while (isdigit(s[++i] = c = getch()))
             ;
     s[i] = '\0';
     if (c != EOF)
         ungetch(c);
+    printf("s: %s\n", s);
     return NUMBER;
 }

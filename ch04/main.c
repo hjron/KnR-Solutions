@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
     char s[MAXOP];
     enum bool must_pop; /* keep stack intact after pressing enter */
 
+    must_pop = yes;
     while ((type = getop(s)) != EOF) {
         switch (type) {
             case NUMBER:
@@ -43,12 +44,25 @@ int main(int argc, char *argv[]) {
                 else
                     printf("error: zero division\n");
                 break;
+            case 's':
+                push(sin(pop()));
+                break;
+            case 'c':
+                push(cos(pop()));
+                break;
+            case 'x':
+                push(exp(pop()));
+                break;
+            case 'p':
+                op2 = pop();
+                push(pow(pop(), (int) op2));
+                break;
             case '\n':
                 if (must_pop)
                     printf("\t%.8g\n", pop());
                 must_pop = yes;
                 break;
-            case 'p': /* peek */
+            case 'k': /* peek */
                 printf("\t%.8g\n", peek());
                 must_pop = no;
                 break;
@@ -56,11 +70,11 @@ int main(int argc, char *argv[]) {
                 copy();
                 must_pop = no;
                 break;
-            case 's': /* swap top 2 elements */
+            case 'w': /* swap top 2 elements */
                 swap();
                 must_pop = no;
                 break;
-            case 'c': /* erase the stack */
+            case 'e': /* erase the stack */
                 clear();
                 must_pop = no;
                 break;

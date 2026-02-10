@@ -14,7 +14,7 @@ int getch(void) {
 /* ungetch: push character back on input */
 void ungetch(int c) {
     if (bufp >= BUFSIZE)
-        printf("error: ungetch too many characters\n");
+        printf("error: ungetch not enough space\n");
     else
         buf[bufp++] = c;
 }
